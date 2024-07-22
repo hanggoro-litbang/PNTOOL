@@ -33,7 +33,7 @@
 # case selection
 #
  export case=$(zenity --list --radiolist --text "<b>Select case</b> " \
- --hide-header --column "Buy" --column "Item" TRUE "ID1" FALSE "ID2" FALSE "ID3" FALSE "ID4")
+ --hide-header --column "Buy" --column "Item" TRUE "ID1" FALSE "ID2")
  echo "case=" $case
 #
 # select procedures to be run
