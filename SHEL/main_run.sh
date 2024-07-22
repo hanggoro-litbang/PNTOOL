@@ -47,16 +47,6 @@ echo "in main shel wuudir=" $wuudir
 #
  echo $hh
  echo "date_input2=" $date_input
-# d1=${date_input:0:8}
-# d2=${date_input:9:8}
-# echo "d1=" $d1
-# echo "d2=" $d2
-# start_date="${d1:6:4}${d1:0:2}${d1:3:2}"
-# end_date="${d2:6:4}${d2:0:2}${d2:3:2}"
- #start_date="20${d1:6:2}${d1:0:2}${d1:3:2}"
- #end_date="20${d2:6:2}${d2:0:2}${d2:3:2}"
-# start_date="20${d1:6:2}${d1:3:2}${d1:0:2}"
-# end_date="20${d2:6:2}${d2:3:2}${d2:0:2}"
  echo "start_date=" $start_date
  echo "end_date=" $end_date
 #
@@ -130,7 +120,7 @@ TRUE ${proc_3} TRUE ${proc_4} TRUE ${proc_5} TRUE ${proc_6} TRUE ${proc_7})
 echo "proc_choices" $proc_choices
 #
  num_proc=2    # number of cores for parallel run 
- domaim=1      # domain to DA and NCL
+ domain=1      # domain to DA and NCL
  num_proc=$(zenity --list --radiolist --text "<b> Pallelization </b> number of CPU core" \
  --hide-header --column "Buy" --column "Item" \
 TRUE "1" FALSE "2" FALSE "4" FALSE "8" FALSE "16")
