@@ -1,0 +1,10 @@
+#!/usr/bin/Rscript
+install.packages("remotes")
+library(remotes)
+install_github("harphub/harp")
+install_github("harphub/Rgrib2")
+install.packages("ncdf4")
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("scico")
+install.packages("forcats")
