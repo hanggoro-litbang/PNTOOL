@@ -119,14 +119,14 @@ proc_choices=$(zenity --list --checklist --title="Run 선택" --column="" \
 --column="내용" TRUE ${proc_1} TRUE ${proc_2} \
 TRUE ${proc_3} TRUE ${proc_4} TRUE ${proc_5} TRUE ${proc_6} TRUE ${proc_7})
 #
-if [[ $proc_choices == *$proc_5* ]]; then
- echo "selected : " $proc_5
- run_name=true
- wrfda_opt=$(zenity --list --radiolist --title="WRFDA OPT"\
-         --column="" --column="" TRUE ${proc_8} FALSE ${proc_9})
-else
- run_name=false
-fi
+#if [[ $proc_choices == *$proc_5* ]]; then
+# echo "selected : " $proc_5
+# run_name=true
+# wrfda_opt=$(zenity --list --radiolist --title="WRFDA OPT"\
+# --column="" --column="" TRUE ${proc_8} FALSE ${proc_9})
+#else
+# run_name=false
+#fi
 #
 echo "proc_choices" $proc_choices
 #
