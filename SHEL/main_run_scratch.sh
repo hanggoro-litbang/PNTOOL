@@ -118,16 +118,18 @@ proc_9="OBS"
 proc_choices=$(zenity --list --checklist --title="Run 선택" --column="" \
 --column="내용" TRUE ${proc_1} TRUE ${proc_2} \
 TRUE ${proc_3} TRUE ${proc_4} TRUE ${proc_5} TRUE ${proc_6} TRUE ${proc_7})
-#
+
+##########################
 #if [[ $proc_choices == *$proc_5* ]]; then
 # echo "selected : " $proc_5
-# run_name=true
+# run_wrfda=true
 # wrfda_opt=$(zenity --list --radiolist --title="WRFDA OPT"\
 # --column="" --column="" TRUE ${proc_8} FALSE ${proc_9})
 #else
-# run_name=false
+# run_wrfda=false
 #fi
-#
+##########################
+
 echo "proc_choices" $proc_choices
 #
  num_proc=2    # number of cores for parallel run 
@@ -142,13 +144,13 @@ TRUE "1" FALSE "2" FALSE "3" FALSE "4")
 echo "num_proc=" $num_proc
 echo "domain=" $domain
 #
- run_name=true   # namelist setupt
- run_gfs=true    # download gfs forecast data
- run_wps=true    # preprocess (ungrib, metgrid)
- run_real=true   # make initial condition
- run_wrfda=true  # data assimilation
- run_wrf=true    # run wrf  (num_proc=?)
- run_ncl=true    # create figures
+# run_name=true   # namelist setup
+# run_gfs=true    # download gfs forecast data
+# run_wps=true    # preprocess (ungrib, metgrid)
+# run_real=true   # make initial condition
+# run_wrfda=true  # data assimilation
+# run_wrf=true    # run wrf  (num_proc=?)
+# run_ncl=true    # create figures
 #
 if [[ $proc_choices == *$proc_1* ]]; then
  echo "selected : " $proc_1
@@ -181,6 +183,15 @@ fi
 if [[ $proc_choices == *$proc_5* ]]; then
  echo "selected : " $proc_5
  run_wrfda=true
+ wrfda_opt=$(zenity --list --radiolist --title="WRFDA OPT"\
+ --column="" --column="" TRUE ${proc_8} FALSE ${proc_9})
+ if [[ $proc_choices == *$proc_8* ]]; then
+  echo "selected : " $proc_8
+  run_wrfda_buf=true
+ else
+  echo "selected : " $proc_9
+  run_wrfda_obs=true
+ fi
 else
  run_wrfda=false
 fi
