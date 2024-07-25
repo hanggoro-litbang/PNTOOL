@@ -6,7 +6,7 @@
 #
  date_input=$(zenity --forms --text='start and end date'\
  --add-calendar='start date' --add-calendar='end date')
- echo ${date_input}
+ echo "Simulation Date = ${date_input}"
  yy1=${date_input:6:2}
  yy2=${date_input:15:2}
  mm1=${date_input:3:2}
@@ -19,29 +19,29 @@
 # start time in UTC
 #
  hh=$(zenity --list --radiolist --text "<b>start time in UTC</b> " \
- --hide-header --column "Buy" --column "Item" TRUE "00UTC" FALSE "06UTC" \
- FALSE "12UTC" FALSE "18UTC")
- echo $hh
+ --hide-header --column "Buy" --column "Item" TRUE "00 UTC" FALSE "06 UTC" \
+ FALSE "12 UTC" FALSE "18 UTC")
+ echo "Intial Condition = $hh"
 #
 # boundary condition interval in hour 
 #
  bdy_int=$(zenity --list --radiolist --text "<b>lateral boundary inteval (hours)</b> " \
  --hide-header --column "Buy" --column "Item" FALSE "1" FALSE "3" \
  TRUE "6" FALSE "12" FALSE "24")
- echo "bdy_int=" $bdy_int
+ echo "Boundary Interval = $bdy_int"
 #
 # case selection
 #
  export case=$(zenity --list --radiolist --text "<b>Select case</b> " \
  --hide-header --column "Buy" --column "Item" TRUE "ID1" FALSE "ID2")
- echo "case=" $case
+ echo "Case = $case"
 #
 # select procedures to be run
 #
 wuudir_tmp=$(pwd)
 wuudir="${wuudir_tmp:0:-5}"
 echo "in main shel wuudir=" $wuudir
- echo "wuudir=" $wuudir
+ echo "Main Directory = $wuudir"
 #
 # convert to yyyymmdd format
 #
@@ -223,8 +223,7 @@ shelldir="${wuudir}/SHEL"
 #----------------------------------------------
  if ($run_name) ; then
    echo "main_shell start: prepare namelist"
-#   bash ./run0_namelist_2dom.sh $start_time $end_time $run_days $bdy_int
-   bash ./run0_namelist.sh $start_time $end_time $run_days $bdy_int $wuudir $case $start_da $end_da $domain
+   #bash ./run0_namelist.sh $start_time $end_time $run_days $bdy_int $wuudir $case $start_da $end_da $domain
    echo "main_shell end: prepare namelist"
  else
    echo "skip namelist modification"
@@ -235,8 +234,8 @@ shelldir="${wuudir}/SHEL"
 #----------------------------------------------
  if ($run_gfs) ; then
    echo "main_shell start: gfs download"
-   bash ./run1_gfs_prepare.sh $run_days $bdy_int
-   bash ./run1_gfs.sh $start_time $wuudir $Lat_N $Lat_S $Lon_E $Lon_W
+   #bash ./run1_gfs_prepare.sh $run_days $bdy_int
+   #bash ./run1_gfs.sh $start_time $wuudir $Lat_N $Lat_S $Lon_E $Lon_W
    echo "main_shell end: gfs download"
  else
    echo "skip to download GFS data"
@@ -247,7 +246,7 @@ shelldir="${wuudir}/SHEL"
 #----------------------------------------------
  if ($run_wps) ; then
    echo "main_shell start: wps"
-   bash ./run2_wps.sh $start_time $wuudir
+   #bash ./run2_wps.sh $start_time $wuudir
    echo "main_shell end: wps"
  else
    echo "skip to run WPS(ungrib, metgrid)"
@@ -257,7 +256,7 @@ shelldir="${wuudir}/SHEL"
 #----------------------------------------------
  if ($run_real) ; then
    echo "main_shell start: wrf"
-   bash ./run3_real.sh $wuudir
+   #bash ./run3_real.sh $wuudir
    echo "main_shell end: wrf"
  else
    echo "skip to run real"
@@ -267,7 +266,7 @@ shelldir="${wuudir}/SHEL"
 #----------------------------------------------
  if ($run_wrfda) ; then
    echo "main_shell start: wrfda 3dvar"
-   bash ./run4_da.sh $start_time $wuudir $domain
+   #bash ./run4_da.sh $start_time $wuudir $domain
    echo "main_shell end: wrfda 3dvar"
  else
    echo "skip to run real"
@@ -277,7 +276,7 @@ shelldir="${wuudir}/SHEL"
 #----------------------------------------------
  if ($run_wrf) ; then
    echo "main_shell start: wrf"
-   bash ./run5_wrf.sh ${num_proc} $wuudir
+   #bash ./run5_wrf.sh ${num_proc} $wuudir
    echo "main_shell end: wrf"
  else
    echo "skip to run wrf"
@@ -288,7 +287,7 @@ shelldir="${wuudir}/SHEL"
 #----------------------------------------------
  if ($run_ncl) ; then
    echo "main_shell start: ncl"
-   bash ./run6_ncl.sh $start_time $domain $wuudir
+   #bash ./run6_ncl.sh $start_time $domain $wuudir
    echo "main_shell end: ncl"
  else
    echo "skip to run ncl"
