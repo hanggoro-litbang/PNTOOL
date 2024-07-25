@@ -40,22 +40,22 @@
 #
 wuudir_tmp=$(pwd)
 wuudir="${wuudir_tmp:0:-5}"
-echo "in main shel wuudir=" $wuudir
+#echo "in main shel wuudir=" $wuudir
  echo "Main Directory = $wuudir"
 #
 # convert to yyyymmdd format
 #
- echo $hh
- echo "date_input2=" $date_input
- echo "start_date=" $start_date
- echo "end_date=" $end_date
+ #echo $hh
+ #echo "date_input2=" $date_input
+ #echo "start_date=" $start_date
+ #echo "end_date=" $end_date
 #
 # convert to yyyymmddhh format
 #
  start_time="${start_date}${hh:0:2}"
  end_time="${end_date}${hh:0:2}"
- echo "start time =" $start_time
- echo "end time =" $end_time
+ #echo "start time =" $start_time
+ #echo "end time =" $end_time
 #
 # forecast periods in days
 #
@@ -67,8 +67,8 @@ echo "in main shel wuudir=" $wuudir
  start_da=$(date -d "$tempval1" +%Y%m%d%H)
  tempval2=$(echo "$tempval +1 hour")
  end_da=$(date -d "$tempval2" +%Y%m%d%H)
- echo "start_da=" $start_da
- echo "end_da=" $end_da
+ #echo "start_da=" $start_da
+ #echo "end_da=" $end_da
 #
 
 #Domain boarder coordinates menu for input
