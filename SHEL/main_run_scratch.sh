@@ -189,12 +189,12 @@ if [[ $proc_choices == *$proc_5* ]]; then
  --column="" --column="" TRUE ${proc_8} FALSE ${proc_9})
  if [[ $wrfda_opt == *$proc_8* ]]; then
   #echo "selected : " $proc_8
-  run_wrfda_buf=true
+  export run_wrfda_buf=true
   run_wrfda_obs=false
  else
   #echo "selected : " $proc_9
   run_wrfda_buf=false
-  run_wrfda_obs=true
+  export run_wrfda_obs=true
  fi
 else
  run_wrfda=false
