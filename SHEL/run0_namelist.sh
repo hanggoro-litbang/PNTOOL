@@ -136,7 +136,7 @@ cp ${wrfdir}/namelist.input_tmp ${wrfdir}/namelist.input
 # for WRFDA namelist.input
 #
 #
-#run_wrfda_obs=true
+if ($run_wrfda_buf) ; then
 sw_year=${start_da:0:4}
 sw_month=${start_da:4:2}
 sw_day=${start_da:6:2}
@@ -198,6 +198,7 @@ cp ${wrfdadir}/namelist.input_tmp ${wrfdadir}/namelist.input
 # for WRFDA namelist.input
 #
 #
+else
 sw_year=${start_da:0:4}
 sw_month=${start_da:4:2}
 sw_day=${start_da:6:2}
@@ -252,3 +253,4 @@ sed -i -e "s/${b_timewindow_max}/${a_timewindow_max}/g" ${wrfdadir}/namelist.inp
 #
 cp ${wrfdadir}/namelist.input_tmp ${wrfdadir}/namelist.input
 #
+fi
