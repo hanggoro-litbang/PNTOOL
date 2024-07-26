@@ -136,6 +136,7 @@ cp ${wrfdir}/namelist.input_tmp ${wrfdir}/namelist.input
 # for WRFDA namelist.input
 #
 #
+#run_wrfda_obs=true
 sw_year=${start_da:0:4}
 sw_month=${start_da:4:2}
 sw_day=${start_da:6:2}
