@@ -31,7 +31,8 @@ for(p in requiredPackages){
   library(p,character.only = TRUE)
 }
 
-wdir<-'/scratch/inanwp/INPUT/Asimilate/'
+#wdir<-'/scratch/inanwp/INPUT/Asimilate/'
+wdir<-args[2]
 setwd(wdir)
 
 #listing file input (mungkin bisa juga list all *.csv file)
