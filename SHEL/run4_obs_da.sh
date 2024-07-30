@@ -19,7 +19,7 @@ cd $wuudir/WRFDA
 #
 #rm ./fg ./ob.bufr
 #
-./csv2littleR.R ${start_yyyymmddhh} ${asimdir}
+${wuudir}/SHEL/csv2littleR.R ${start_yyyymmddhh} ${asimdir}
 #
 #ln -sf $wuudir/WRFV4/run/wrfinput_d0${domain} ./fg
 #ln -sf $datadir/gdas.t${hh}z.prepbufr.nr ./ob.bufr
