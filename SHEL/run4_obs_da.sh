@@ -12,7 +12,7 @@ hh=${start_yyyymmddhh:8:2}
 echo " check wuudir : $wuudir"
 datadir=${wuudir}/DATA/GFS/${yyyymmdd}/${hh}
 echo " check datadir : $datadir"
-asimdir=${wuudir}/DATA/Asimilate/${yyyymmdd}${hh}
+asimdir=${wuudir}/DATA/Asimilate/
 echo " check asimdir : $asimdir"
 #
 cd $wuudir/WRFDA
