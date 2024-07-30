@@ -21,6 +21,8 @@ cd $wuudir/WRFDA
 #
 ${wuudir}/SHEL/csv2littleR.R ${start_yyyymmddhh} ${asimdir}
 #
+obsproc
+#
 #ln -sf $wuudir/WRFV4/run/wrfinput_d0${domain} ./fg
 #ln -sf $datadir/gdas.t${hh}z.prepbufr.nr ./ob.bufr
 #ln -sf $datadir/gdas.t${hh}z.gpsro.tm00.bufr_d.nr ./gpsro.bufr
