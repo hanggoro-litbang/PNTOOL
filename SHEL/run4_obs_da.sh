@@ -12,27 +12,31 @@ hh=${start_yyyymmddhh:8:2}
 echo " check wuudir : $wuudir"
 datadir=${wuudir}/DATA/GFS/${yyyymmdd}/${hh}
 echo " check datadir : $datadir"
+asimdir=${wuudir}/DATA/Asimilate/${yyyymmdd}${hh}
+echo " check asimdir : $asimdir"
 #
 cd $wuudir/WRFDA
 #
-rm ./fg ./ob.bufr
+#rm ./fg ./ob.bufr
 #
-ln -sf $wuudir/WRFV4/run/wrfinput_d0${domain} ./fg
-ln -sf $datadir/gdas.t${hh}z.prepbufr.nr ./ob.bufr
-ln -sf $datadir/gdas.t${hh}z.gpsro.tm00.bufr_d.nr ./gpsro.bufr
+./csv2littleR.R ${start_yyyymmddhh} ${asimdir}
 #
-rm ./wrfvar_output
-./da_wrfvar.exe 
+#ln -sf $wuudir/WRFV4/run/wrfinput_d0${domain} ./fg
+#ln -sf $datadir/gdas.t${hh}z.prepbufr.nr ./ob.bufr
+#ln -sf $datadir/gdas.t${hh}z.gpsro.tm00.bufr_d.nr ./gpsro.bufr
 #
-mv $wuudir/WRFV4/run/wrfinput_d0${domain} $wuudir/WRFV4/run/bg_wrfinput_d0${domain}
-ln -sf $wuudir/WRFDA/wrfvar_output $wuudir/WRFV4/run/wrfinput_d0${domain}
+#rm ./wrfvar_output
+#./da_wrfvar.exe 
+#
+#mv $wuudir/WRFV4/run/wrfinput_d0${domain} $wuudir/WRFV4/run/bg_wrfinput_d0${domain}
+#ln -sf $wuudir/WRFDA/wrfvar_output $wuudir/WRFV4/run/wrfinput_d0${domain}
 #
 # update lbc
-echo " after 3dvar update lateral boundary condition"
-cp $wuudir/WRFV4/run/wrfbdy_d01 $wuudir/WRFV4/run/bg_wrfbdy_d01
-./da_update_bc.exe
+#echo " after 3dvar update lateral boundary condition"
+#cp $wuudir/WRFV4/run/wrfbdy_d01 $wuudir/WRFV4/run/bg_wrfbdy_d01
+#./da_update_bc.exe
 #
-echo "############## run4_da.sh #######################"   
-ls -l wrfvar*   
-echo "#################################################"  
+#echo "############## run4_da.sh #######################"   
+#ls -l wrfvar*   
+#echo "#################################################"  
 #
