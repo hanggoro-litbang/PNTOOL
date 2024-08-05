@@ -1,0 +1,50 @@
+&share
+ wrf_core = 'ARW',
+ max_dom = 1,
+ start_date = 'YYYY-MM-DD_HH:MM:SS','YYYY-MM-DD_HH:MM:SS','YYYY-MM-DD_HH:MM:SS',
+ end_date   = 'YYYY-MM-DD_HH:MM:SS','YYYY-MM-DD_HH:MM:SS','YYYY-MM-DD_HH:MM:SS',
+ interval_seconds = SSSSS 
+ io_form_geogrid = 2,
+/
+
+&geogrid
+ parent_id         =   1,   1,   2,   1,   4,
+ parent_grid_ratio =   1,   3,   3,   3,   3,
+ i_parent_start    =   1,  49,  48, 95,  41,
+ j_parent_start    =   1,  40,  45, 64,  39,
+ e_we              = 253, 121, 121, 121, 121,
+ e_sn              = 151, 121, 121, 121, 121,
+ !
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT NOTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ ! The default datasets used to produce the MAXSNOALB and ALBEDO12M
+ ! fields have changed in WPS v4.0. These fields are now interpolated
+ ! from MODIS-based datasets.
+ !
+ ! To match the output given by the default namelist.wps in WPS v3.9.1,
+ ! the following setting for geog_data_res may be used:
+ !
+ ! geog_data_res = 'maxsnowalb_ncep+albedo_ncep+default', 'maxsnowalb_ncep+albedo_ncep+default', 
+ !
+ !!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT NOTE !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ !
+ geog_data_res = 'default','default',
+ dx = 27000,
+ dy = 27000,
+ map_proj = 'mercator',
+ ref_lat   = -2.5,
+ ref_lon   = 120.0,
+ truelat1  = -2.5,
+ truelat2  = -2.5,
+ stand_lon = 120.0,
+ geog_data_path = '../WPS_GEOG/'
+/
+
+&ungrib
+ out_format = 'WPS',
+ prefix = 'FILE',
+/
+
+&metgrid
+ fg_name = 'FILE'
+ io_form_metgrid = 2, 
+/
